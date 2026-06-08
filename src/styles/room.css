@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Song list section */
+.song-list {
+  height: 200px;
+  border-top: 1px solid #ccc;
+  padding: 10px;
+  overflow-x: auto;
+  display: flex;
+  gap: 10px;
+  background: #fafafa;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  overflow-y: hidden;
+  margin-bottom: 10px;
+}
+
+/* Each song card (for later) */
+.song-card {
+  min-width: 150px;
+  height: 100px;
+  background: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Room header - display Username and Room ID */
+.room-container .header {
+  width: 100%;
+  justify-items: center;
+
+}
+
+.room-container .header .content{
+  background: yellow;
+  border: 2px solid yellow;
+  border-radius: 25px;
+  width: 50%;
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+  letter-spacing: 0.5rem;
+}
+
+.room-container .main {
+  width: 100%;
+  background-color: aquamarine;
+  display: flex;
+  justify-content: space-between;
+}
+
+.room-container .main .users{
+  width: 15%;
+  background-color: antiquewhite;
+  border: 1px solid black;
+
+}
+.room-container .main .center{
+  width: 55%;
+
+}
+.room-container .main .chat{
+  width: 25%;
+  background-color: burlywood;
+  border: 1px solid black;
+
+}

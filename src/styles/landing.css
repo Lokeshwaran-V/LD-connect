@@ -1,0 +1,166 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Page */
+.landing-container {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px;
+
+  background: linear-gradient(
+    135deg,
+    #5b21b6,
+    #7c3aed,
+    #ec4899,
+    #f97316
+  );
+
+  background-size: 400% 400%;
+  animation: gradientFlow 12s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: left;
+  }
+
+  50% {
+    background-position: right;
+  }
+
+  100% {
+    background-position: left;
+  }
+}
+
+/* Heading */
+.landing-container h1 {
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.landing-container p {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+}
+
+/* Grid */
+.card-grid {
+  width: 100%;
+  max-width: 1200px;
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
+  gap: 24px;
+}
+
+/* Common Card */
+.option-card {
+  padding: 30px;
+
+  border-radius: 24px;
+
+  backdrop-filter: blur(20px);
+
+  background: rgba(255, 255, 255, 0.15);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  text-align: center;
+
+  cursor: pointer;
+
+  transition: all 0.35s ease;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.option-card:hover {
+  transform: translateY(-8px) scale(1.03);
+
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+/* Card Image */
+.option-card img {
+    width: 220px;
+    border-radius: 25px;
+    height: 160px;
+    object-fit: cover;
+
+}
+/* Emoji */
+.option-card .emoji {
+  font-size: 4rem;
+  margin-bottom: 16px;
+}
+
+/* Title */
+.option-card h2 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+/* Description */
+.option-card p {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+/* Individual Themes */
+
+.couple {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 105, 180, 0.35),
+    rgba(186, 85, 211, 0.35)
+  );
+}
+
+.family {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.35),
+    rgba(16, 185, 129, 0.35)
+  );
+}
+
+.gang {
+  background: linear-gradient(
+    135deg,
+    rgba(249, 115, 22, 0.35),
+    rgba(245, 158, 11, 0.35)
+  );
+}
+
+.party {
+  background: linear-gradient(
+    135deg,
+    rgba(236, 72, 153, 0.35),
+    rgba(99, 102, 241, 0.35)
+  );
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .landing-container h1 {
+    font-size: 2.2rem;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
