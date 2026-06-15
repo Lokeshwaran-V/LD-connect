@@ -18,6 +18,7 @@ function Home() {
       state: {
         name,
         roomType,
+        roomTitle,
         maxUsers,
       },
     });
@@ -29,6 +30,7 @@ function Home() {
       state: {
         name,
         roomType,
+        roomTitle,
         maxUsers,
       },
     });
@@ -44,7 +46,9 @@ function Home() {
         <p className="subtitle">
           Stay connected. Watch together. Chat together.
         </p>
-        <h2 className="room-type">{roomTitle} Room - {maxUsers} Users</h2>
+        <h2 className="room-type">
+          {roomTitle} Room - {maxUsers} Users
+        </h2>
 
         <input
           className="input"
