@@ -1,6 +1,7 @@
 import React from "react";
 import { socket } from "../socket";
 import { useNavigate } from "react-router-dom";
+import VideoPlayer from "./VideoPlayer";
 
 function RoomControl() {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ function RoomControl() {
     <>
       {/* Controls */}
       <div className="controls">
+        {/* <VideoPlayer videoId={videoId} roomId={roomId} /> */}
         <button onClick={handleVideoControl}>🎥 Video</button>
         <button onClick={handleAudioControl}>🎤 Audio</button>
         <button onClick={handleLeaveRoom}>🚪 Leave</button>

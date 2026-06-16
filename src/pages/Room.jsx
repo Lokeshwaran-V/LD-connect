@@ -9,6 +9,7 @@ import RoomHeader from "../components/RoomHeader";
 import UserPanel from "../components/UserPanel";
 import RoomControl from "../components/RoomControl";
 import CoupleLayout from "../components/layouts/CoupleLayout";
+import GangLayout from "../components/layouts/GangLayout";
 
 function Room() {
   const { id } = useParams();
@@ -114,34 +115,15 @@ function Room() {
         setVideoId={setVideoId}
       />
 
-      {/* Song List */}
-      {/* <div className="song-list active">
-        <YouTubeSection onSelectVideo={setVideoId} roomId={id} />
-      </div> */}
-
-      {/* Main Layout */}
-      {/* <div className="main"> */}
-      {/* Users */}
-      {/* <UserPanel users={users} title="dynamic" /> */}
-
-      {/* Center - Video */}
-      {/* <div className="center">
-          <VideoPlayer videoId={videoId} roomId={id} />
-        </div> */}
-
-      {/* Chat */}
-      {/* <div className="chat">
-          <ChatBox roomId={id} name={name} />
-        </div>
-      </div> */}
-
-      {/* Controls */}
-      {/* <div className="controls">
-        <button>🎥 Video</button>
-        <button>🎤 Audio</button>
-        <button onClick={handleLeaveRoom}>🚪 Leave</button>
-      </div> */}
-      <RoomControl />
+      {/* <GangLayout
+        roomId={id}
+        roomTitle={roomTitle}
+        maxUsers={maxUsers}
+        users={users}
+        name={name}
+        videoId={videoId}
+        setVideoId={setVideoId}
+      /> */}
     </div>
   );
 }

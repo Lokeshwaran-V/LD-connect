@@ -4,6 +4,7 @@ import YouTubeSection from "../YouTubeSection";
 import VideoPlayer from "../VideoPlayer";
 import RoomControl from "../RoomControl";
 import ChatBox from "../ChatBox";
+// import "../../styles/couple-layout.css"
 
 function CoupleLayout({
   roomId,
@@ -13,7 +14,6 @@ function CoupleLayout({
   videoId,
   setVideoId,
   name,
-  onLeave,
 }) {
   return (
     <>
@@ -31,12 +31,16 @@ function CoupleLayout({
       </div>
 
       <div className="controller">
-        <RoomControl onLeave={onLeave} />
+        <RoomControl />
       </div>
 
-      <YouTubeSection onSelectVideo={setVideoId} roomId={roomId} />
+      <div className="couple-playlist">
+        <YouTubeSection onSelectVideo={setVideoId} roomId={roomId} />
+      </div>
 
-      <ChatBox roomId={roomId} name={name} />
+      <div className="couple-chat">
+        <ChatBox roomId={roomId} name={name} />
+      </div>
     </>
   );
 }

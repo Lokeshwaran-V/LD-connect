@@ -1,0 +1,340 @@
+
+
+/* Inputs & Buttons styled for intimacy */
+input {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 30px !important;
+  padding: 0.75rem 1.25rem !important;
+  color: #ffffff !important;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  border-color: rgba(218, 44, 102, 0.6) !important;
+  box-shadow: 0 0 15px rgba(218, 44, 102, 0.2);
+  background: rgba(255, 255, 255, 0.07) !important;
+}
+
+button {
+  background: linear-gradient(135deg, rgba(218, 44, 102, 0.8) 0%, rgba(142, 28, 77, 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(218, 44, 102, 0.2);
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(218, 44, 102, 0.5);
+  filter: brightness(1.1);
+}
+
+/* ==========================================
+   3. APP LAYOUT STRUCTURE (CoupleLayout)
+   ========================================== */
+#root {
+  display: grid;
+  grid-template-columns: 280px 1fr 340px;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: 
+    "header header header"
+    "sidebar main chat"
+    "playlist main chat";
+  gap: 20px;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 20px;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   4. ROOM HEADER STYLE
+   ========================================== */
+.header, .room-info {
+  grid-area: header;
+}
+
+/* Merging header data cleanly */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+}
+
+.header h2 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+.header h3 {
+  font-size: 1rem;
+  background: rgba(218, 44, 102, 0.15);
+  color: #ff6b9d;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin: 0;
+  border: 1px solid rgba(218, 44, 102, 0.2);
+}
+
+.room-info h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffffff 40%, #ff9ebb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 10px 0 0 0;
+}
+/* ==========================================
+   5. SIDEBAR (UserPanel)
+   ========================================== */
+.users {
+  grid-area: sidebar;
+  
+  /* Vanilla CSS Glassmorphism Styles */
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4),
+              inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.users:hover {
+  border-color: rgba(218, 44, 102, 0.2);
+  box-shadow: 0 12px 40px 0 rgba(218, 44, 102, 0.1),
+              inset 0 1px 2px rgba(255, 255, 255, 0.1);
+}
+
+.users h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: #ff6b9d;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 10px;
+}
+
+.user-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  margin-bottom: 8px;
+  font-weight: 500;
+  animation: pulseGlow 3s infinite alternate;
+}
+
+/* ==========================================
+   6. MAIN SCREEN (VideoPlayer & RoomControl)
+   ========================================== */
+.couple-main {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#player {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 
+              0 0 40px rgba(218, 44, 102, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+/* Play/Pause underneath player */
+#player + div {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+/* Room Control Toolbar Overlay */
+.controller {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.controls {
+  background: rgba(15, 8, 12, 0.6);
+  backdrop-filter: blur(20px);
+  padding: 10px 25px;
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.controls button {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.controls button:hover {
+  color: #ff6b9d;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: none;
+}
+
+.controls button:last-child {
+  color: #ff4a4a;
+}
+.controls button:last-child:hover {
+  background: rgba(255, 74, 74, 0.1);
+}
+
+/* Hide the double player instance inside controls rendering */
+.controls #player, 
+.controls #player + div {
+  display: none !important;
+}
+
+/* ==========================================
+   7. PLAYLIST SECTION (YouTubeSection)
+   ========================================== */
+.couple-playlist {
+  grid-area: playlist;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 1.2rem;
+}
+
+.couple-playlist > div {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.couple-playlist .active {
+  padding-top: 10px;
+}
+
+.couple-playlist .active > div {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.couple-playlist .active > div:hover {
+  border-color: rgba(218, 44, 102, 0.4);
+  transform: scale(1.02);
+  background: rgba(218, 44, 102, 0.05);
+}
+
+.couple-playlist p {
+  padding: 6px 10px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==========================================
+   8. ROMANTIC CHAT BOX (ChatBox)
+   ========================================== */
+.couple-chat {
+  grid-area: chat;
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.couple-chat > div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.couple-chat h3 {
+  margin-top: 0;
+  color: #ff6b9d;
+  letter-spacing: 0.05em;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.couple-chat h3::before {
+  content: "💬";
+  font-size: 1rem;
+}
+
+/* Chat History Display Container */
+.couple-chat div[style*="overflowY"] {
+  border: none !important; /* Overriding inline black border */
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+  margin-bottom: 15px;
+  box-shadow: inset 0 4px 20px rgba(0,0,0,0.4);
+}
+
+/* Individual message styling */
+.couple-chat div[style*="overflowY"] > div {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 8px 14px;
+  border-radius: 14px;
+  border-bottom-left-radius: 4px;
+  width: fit-content;
+  max-width: 85%;
+  line-height: 1.4;
+  font-size: 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.couple-chat div[style*="overflowY"] strong {
+  color: #ff9ebb;
+  display: block;
+  font-size: 0.8rem;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Input area */
+.chat-event {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
