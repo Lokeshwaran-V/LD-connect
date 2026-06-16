@@ -5,6 +5,10 @@ import ChatBox from "../components/ChatBox";
 import VideoPlayer from "../components/VideoPlayer";
 import YouTubeSection from "../components/YouTubeSection";
 import "../styles/room.css";
+import RoomHeader from "../components/RoomHeader";
+import UserPanel from "../components/UserPanel";
+import RoomControl from "../components/RoomControl";
+import CoupleLayout from "../components/layouts/CoupleLayout";
 
 function Room() {
   const { id } = useParams();
@@ -81,12 +85,7 @@ function Room() {
     return () => {
       socket.off("users_updated", handleUsersUpdated);
     };
-  }, []);
-
-  const handleLeaveRoom = () => {
-    socket.disconnect();
-    navigate("/");
-  };
+  }, [users]);
 
   // 🎬 Video sync listener
   useEffect(() => {
@@ -105,54 +104,44 @@ function Room() {
 
   return (
     <div className="room-container">
-      {/* Header */}
-      <div className="header">
-        <div className="content">
-          <h2>Room Id: {id}</h2>
-          <h3>
-            Users: ({users.length} / {maxUsers})
-          </h3>
-        </div>
-      </div>
-      <div className="room-info">
-        <h2>{roomTitle} Room</h2>
-        <p>Max Users: {maxUsers}</p>
-      </div>
+      <CoupleLayout
+        roomId={id}
+        roomTitle={roomTitle}
+        maxUsers={maxUsers}
+        users={users}
+        name={name}
+        videoId={videoId}
+        setVideoId={setVideoId}
+      />
 
       {/* Song List */}
-      <div className="song-list active">
+      {/* <div className="song-list active">
         <YouTubeSection onSelectVideo={setVideoId} roomId={id} />
-      </div>
+      </div> */}
 
       {/* Main Layout */}
-      <div className="main">
-        {/* Users */}
-        <div className="users">
-          <h3>Users</h3>
-          {users.map((user) => (
-            <div key={user.id} className="user-item">
-              🟢 {user.name}
-            </div>
-          ))}
-        </div>
+      {/* <div className="main"> */}
+      {/* Users */}
+      {/* <UserPanel users={users} title="dynamic" /> */}
 
-        {/* Center - Video */}
-        <div className="center">
+      {/* Center - Video */}
+      {/* <div className="center">
           <VideoPlayer videoId={videoId} roomId={id} />
-        </div>
+        </div> */}
 
-        {/* Chat */}
-        <div className="chat">
+      {/* Chat */}
+      {/* <div className="chat">
           <ChatBox roomId={id} name={name} />
         </div>
-      </div>
+      </div> */}
 
       {/* Controls */}
-      <div className="controls">
+      {/* <div className="controls">
         <button>🎥 Video</button>
         <button>🎤 Audio</button>
         <button onClick={handleLeaveRoom}>🚪 Leave</button>
-      </div>
+      </div> */}
+      <RoomControl />
     </div>
   );
 }
