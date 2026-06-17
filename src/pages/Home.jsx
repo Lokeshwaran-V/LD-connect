@@ -11,6 +11,7 @@ function Home() {
   const roomType = location.state?.roomType;
   const roomTitle = location.state?.roomTitle;
   const maxUsers = location.state?.maxUsers;
+  const roomIcon = location.state?.roomIcon;
 
   const createRoom = () => {
     const newRoomId = Math.random().toString(36).substring(2, 8);
@@ -20,6 +21,7 @@ function Home() {
         roomType,
         roomTitle,
         maxUsers,
+        roomIcon,
       },
     });
   };
@@ -32,6 +34,7 @@ function Home() {
         roomType,
         roomTitle,
         maxUsers,
+        roomIcon,
       },
     });
   };

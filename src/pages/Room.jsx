@@ -10,6 +10,7 @@ import UserPanel from "../components/UserPanel";
 import RoomControl from "../components/RoomControl";
 import CoupleLayout from "../components/layouts/CoupleLayout";
 import GangLayout from "../components/layouts/GangLayout";
+// import { rooms } from "../data/rooms";
 
 function Room() {
   const { id } = useParams();
@@ -18,6 +19,7 @@ function Room() {
   const roomType = location.state?.roomType;
   const roomTitle = location.state?.roomTitle || "Room";
   const maxUsers = location.state?.maxUsers || 0;
+  const roomIcon = location.state?.roomIcon;
 
   const hasJoined = useRef(false);
   const [videoId, setVideoId] = useState(null);
@@ -49,6 +51,7 @@ function Room() {
           name,
           roomType,
           maxUsers,
+          roomIcon,
         });
         hasJoined.current = true;
       }
@@ -64,7 +67,7 @@ function Room() {
       socket.off("user_joined", handleUserJoined);
       socket.off("connect", joinRoom);
     };
-  }, [id, name, roomType, maxUsers]);
+  }, [id, name, roomType, maxUsers, roomIcon]);
 
   useEffect(() => {
     const handleRoomFull = () => {
@@ -113,6 +116,7 @@ function Room() {
         name={name}
         videoId={videoId}
         setVideoId={setVideoId}
+        roomIcon={roomIcon}
       />
 
       {/* <GangLayout

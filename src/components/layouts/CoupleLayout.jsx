@@ -14,6 +14,7 @@ function CoupleLayout({
   videoId,
   setVideoId,
   name,
+  roomIcon,
 }) {
   return (
     <>
@@ -22,6 +23,7 @@ function CoupleLayout({
         roomId={roomId}
         usersCount={users.length}
         maxUsers={maxUsers}
+        roomIcon={roomIcon}
       />
 
       <div className="couple-main">

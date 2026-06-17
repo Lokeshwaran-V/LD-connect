@@ -11,6 +11,7 @@ function Landing() {
         roomType: room.id,
         roomTitle: room.title,
         maxUsers: room.maxUsers,
+        roomIcon: room.icon,
       },
     });
   };
