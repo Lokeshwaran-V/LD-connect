@@ -44,23 +44,6 @@ function VideoPlayer({ videoId, roomId }) {
           onStateChange: (event) => {
             if (!playerReady.current) return;
             if (isSyncing.current) return;
-
-            // 🔥 Detect SEEK using timestamp change
-            // const currentTime = playerRef.current?.getCurrentTime();
-            // const now = Date.now();
-
-            // if (Math.abs(currentTime - lastSeekTime.current) > 2) {
-            //   if (now - lastSeekTime.current > 1000) {
-            //     console.log("⏩ USER SEEK:", currentTime);
-
-            //     lastSeekTime.current = now;
-
-            //     socket.emit("video_seek", {
-            //       roomId,
-            //       time: currentTime,
-            //     });
-            //   }
-            // }
           },
         },
       });

@@ -1,7 +1,6 @@
 import React from "react";
 
 function UserPanel({users, title="Couple"}) {
-  // console.log("UserPanel users:", users);
   return (
     <>
       {/* Users */}
@@ -9,7 +8,7 @@ function UserPanel({users, title="Couple"}) {
         <h3>Users</h3>
         {users.map((user) => (
           <div key={user.id} className="user-item">
-            🟢 {user.name}
+            <p>🟢 {user.name}</p>
           </div>
         ))}
       </div>

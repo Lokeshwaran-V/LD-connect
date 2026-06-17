@@ -4,7 +4,7 @@ import YouTubeSection from "../YouTubeSection";
 import VideoPlayer from "../VideoPlayer";
 import RoomControl from "../RoomControl";
 import ChatBox from "../ChatBox";
-// import "../../styles/couple-layout.css"
+import "../../styles/couple-layout.css"
 
 function CoupleLayout({
   roomId,
