@@ -72,7 +72,7 @@ function Room() {
   useEffect(() => {
     const handleRoomFull = () => {
       alert("🚫 Room is full");
-      navigate("/home");
+      navigate("/");
     };
     socket.on("room_full", handleRoomFull);
     return () => {

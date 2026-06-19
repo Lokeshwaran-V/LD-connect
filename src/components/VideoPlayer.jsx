@@ -1,12 +1,12 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { socket } from "../socket";
+import "../styles/video-player.css";
 
 function VideoPlayer({ videoId, roomId }) {
   const playerRef = useRef(null);
   const isSyncing = useRef(false);
   const playerReady = useRef(false);
-  // const lastSeekTime = useRef(0);
-  // const isSeeking = useRef(false);
+  const [showOverlay, setShowOverlay] = useState(false);
 
   // Load YouTube API once
   useEffect(() => {
@@ -20,6 +20,7 @@ function VideoPlayer({ videoId, roomId }) {
   // Create player
   useEffect(() => {
     if (!videoId) return;
+    setShowOverlay(true);
 
     const createPlayer = () => {
       if (playerRef.current) {
@@ -27,8 +28,6 @@ function VideoPlayer({ videoId, roomId }) {
       }
 
       playerRef.current = new window.YT.Player("player", {
-        height: "300",
-        width: "100%",
         videoId: videoId,
 
         playerVars: {
@@ -62,6 +61,7 @@ function VideoPlayer({ videoId, roomId }) {
       console.log("📥 PLAY received");
 
       if (!playerReady.current) return;
+      setShowOverlay(false);
 
       isSyncing.current = true;
       playerRef.current?.playVideo();
@@ -84,28 +84,12 @@ function VideoPlayer({ videoId, roomId }) {
       }, 600);
     };
 
-    // const handleSeek = ({ time }) => {
-    //   console.log("📥 SEEK received:", time);
-
-    //   if (!playerReady.current) return;
-
-    //   isSyncing.current = true;
-
-    //   playerRef.current?.seekTo(time, true);
-
-    //   setTimeout(() => {
-    //     isSyncing.current = false;
-    //   }, 800);
-    // };
-
     socket.on("video_play", handlePlay);
     socket.on("video_pause", handlePause);
-    // socket.on("video_seek", handleSeek);
 
     return () => {
       socket.off("video_play", handlePlay);
       socket.off("video_pause", handlePause);
-      // socket.off("video_seek", handleSeek);
     };
   }, []);
 
@@ -116,6 +100,24 @@ function VideoPlayer({ videoId, roomId }) {
     console.log("🎬 USER PLAY");
 
     isSyncing.current = true;
+    playerRef.current?.playVideo();
+
+    socket.emit("video_play", { roomId });
+
+    setTimeout(() => {
+      isSyncing.current = false;
+    }, 500);
+  };
+
+  const handleOverlayPlay = () => {
+    if (!playerReady.current) return;
+
+    setShowOverlay(false);
+
+    console.log("▶ Overlay Play");
+
+    isSyncing.current = true;
+
     playerRef.current?.playVideo();
 
     socket.emit("video_play", { roomId });
@@ -141,15 +143,21 @@ function VideoPlayer({ videoId, roomId }) {
   };
 
   return (
-    <div>
-      <div id="player"></div>
+    <>
+      <div className="video-wrapper">
+        <div id="player"></div>
 
-      {/* 🔥 Custom Controls */}
-      <div style={{ marginTop: "10px" }}>
-        <button onClick={handlePlayClick}>▶️ Play</button>
-        <button onClick={handlePauseClick}>⏸ Pause</button>
+        {showOverlay && (
+          <div className="video-overlay" onClick={handleOverlayPlay}>
+            <div className="overlay-content">
+              <h2>🎬</h2>
+              <h3>Ready to Watch</h3>
+              <p>Start Together</p>
+            </div>
+          </div>
+        )}
       </div>
-    </div>
+    </>
   );
 }
 

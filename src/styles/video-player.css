@@ -1,0 +1,29 @@
+.video-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.75);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  z-index: 10;
+}
+
+.overlay-content {
+  text-align: center;
+  color: white;
+}
+
+.overlay-content h2 {
+  font-size: 4rem;
+  margin-bottom: 10px;
+}
