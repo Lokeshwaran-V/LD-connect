@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { socket } from "../socket";
+import "../styles/youtube-section.css";
 
 function YouTubeSection({ onSelectVideo, roomId }) {
   const [query, setQuery] = useState("");
@@ -13,7 +14,7 @@ function YouTubeSection({ onSelectVideo, roomId }) {
 
     try {
       const res = await fetch(
-        `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&key=${API_KEY}&maxResults=5&type=video`
+        `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&key=${API_KEY}&maxResults=5&type=video`,
       );
 
       const data = await res.json();
@@ -43,35 +44,36 @@ function YouTubeSection({ onSelectVideo, roomId }) {
   };
 
   return (
-    <div>
-      <input
-        placeholder="Search YouTube..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        onKeyDown={(e) => e.key === "Enter" && searchVideos()}
-      />
+    <div className="search-main">
+      <div className="search-input">
+        <input
+          placeholder="Search YouTube..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && searchVideos()}
+        />
 
-      <button onClick={searchVideos}>Search</button>
-    
-      <div style={{ display: "flex", gap: "10px", overflowX: "auto" }} className="active">
-        {videos.map((video) => (
-          <div
-            key={video.id.videoId}
-            onClick={() => handleVideoSelect(video.id.videoId)}
-            style={{
-              cursor: "pointer",
-              width: "150px",
-            }}
-          >
-            <img
-              src={video.snippet.thumbnails.medium.url}
-              style={{ width: "100%" }}
-            />
-            <p style={{ fontSize: "12px" }}>
-              {video.snippet.title}
-            </p>
-          </div>
-        ))}
+        <button onClick={searchVideos}>Search</button>
+      </div>
+
+      <div className="carousel-wrapper">
+        <div className="carousel-track">
+          {videos.map((video) => (
+            <div
+              key={video.id.videoId}
+              onClick={() => handleVideoSelect(video.id.videoId)}
+              style={{
+                cursor: "pointer",
+              }}
+            >
+              <img
+                src={video.snippet.thumbnails.medium.url}
+                style={{ minwidth: "100%" }}
+              />
+              <p style={{ fontSize: "13px" }}>{video.snippet.title}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

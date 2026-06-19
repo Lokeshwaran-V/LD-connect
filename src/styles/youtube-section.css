@@ -1,0 +1,42 @@
+.search-main{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+
+}
+.search-input{
+    width: 20%;
+}
+
+.video-list {
+    display: "flex";
+    gap: "10px";
+    overflow-x: auto;
+    /* width: 75%; */
+}
+
+.carousel-wrapper {
+  position: relative;
+  max-width: 80%;
+  margin: 0 auto;
+  border-radius: 10px;   
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+}
+
+/* Horizontal Scroll Track */
+.carousel-track {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Hides scrollbar on Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+/* .carousel-track::-webkit-scrollbar {
+  display: none;
+} */
