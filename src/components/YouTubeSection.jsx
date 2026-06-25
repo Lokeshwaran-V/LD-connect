@@ -14,7 +14,7 @@ function YouTubeSection({ onSelectVideo, roomId }) {
 
     try {
       const res = await fetch(
-        `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&key=${API_KEY}&maxResults=5&type=video`,
+        `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&key=${API_KEY}&maxResults=10&type=video`,
       );
 
       const data = await res.json();
@@ -47,6 +47,7 @@ function YouTubeSection({ onSelectVideo, roomId }) {
     <div className="search-main">
       <div className="search-input">
         <input
+          id="search-bar"
           placeholder="Search YouTube..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
@@ -59,16 +60,13 @@ function YouTubeSection({ onSelectVideo, roomId }) {
       <div className="carousel-wrapper">
         <div className="carousel-track">
           {videos.map((video) => (
-            <div
+            <div className="carousel-video"
               key={video.id.videoId}
               onClick={() => handleVideoSelect(video.id.videoId)}
-              style={{
-                cursor: "pointer",
-              }}
+              
             >
               <img
                 src={video.snippet.thumbnails.medium.url}
-                style={{ minwidth: "100%" }}
               />
               <p style={{ fontSize: "13px" }}>{video.snippet.title}</p>
             </div>

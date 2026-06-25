@@ -26,6 +26,10 @@ function CoupleLayout({
         roomIcon={roomIcon}
       />
 
+      <div className="couple-playlist">
+        <YouTubeSection onSelectVideo={setVideoId} roomId={roomId} />
+      </div>
+
       <div className="couple-main">
         <div className="video-users">
           <UserPanel users={users} title="💕 Together" />
@@ -36,10 +40,6 @@ function CoupleLayout({
 
       <div className="controller">
         <RoomControl />
-      </div>
-
-      <div className="couple-playlist">
-        <YouTubeSection onSelectVideo={setVideoId} roomId={roomId} />
       </div>
 
       <div className="couple-chat">
