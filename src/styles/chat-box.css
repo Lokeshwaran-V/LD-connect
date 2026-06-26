@@ -1,0 +1,54 @@
+/* CHAT */
+.chat-box {
+  width: 100%;
+  padding: 20px;
+  border-radius: 25px;
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  min-height: 50vh;
+}
+
+.chat-list {
+    width: 100%;
+    padding: 20px;
+    height: 40vh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 25px;
+}
+
+.chat-event {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 5px 0px 5px 0px;
+}
+
+.chat-event input {
+    width: 80%;
+    border-radius: 15px;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.chat-event button {
+    width: 15%;
+    height: auto;
+    border-radius: 15px;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.message-section {
+    display: flex;
+    gap: 10px;
+}
+
+.message-section p {
+    font-size: large;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { socket } from "../socket";
-import "../styles/chatBox.css"
+import "../styles/chat-box.css";
 
 function ChatBox({ roomId, name }) {
   const [message, setMessage] = useState("");
@@ -39,25 +39,21 @@ function ChatBox({ roomId, name }) {
   };
 
   return (
-    <div>
-      <h3>Chat</h3>
+    <div className="chat-box">
+      <h2>Chitter - Chatter</h2>
 
-      <div
-        style={{
-          border: "1px solid black",
-          height: "300px",
-          overflowY: "scroll",
-        }}
-      >
+      <div className="chat-list">
         {messages.map((msg, index) => (
-          <div key={index}>
-            <strong>{msg.name}</strong>: {msg.message}
+          <div className="message-section" key={index}>
+            <p>
+              <strong>{msg.name}</strong>:
+            </p>
+            <p>{msg.message}</p>
           </div>
         ))}
       </div>
 
       <div className="chat-event">
-
         <input
           value={message}
           onChange={(e) => setMessage(e.target.value)}

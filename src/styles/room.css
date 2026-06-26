@@ -79,32 +79,6 @@
   }
 }
 
-
-/* USERS */
-@media (max-width:760px){
-  .users{
-    width: 100%;
-    max-width: 100%;
-  }
-}
-.users {
-  width: 20%;
-  padding: 15px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-.users h3 {
-  margin-bottom: 20px;
-}
-.users p {
-  padding: 5px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.08);
-  margin-bottom: 5px;
-}
-
 /* SONG SECTION */
 .song-list {
   margin-bottom: 20px;
