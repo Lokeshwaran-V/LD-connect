@@ -1,41 +1,68 @@
 import { useNavigate } from "react-router-dom";
+import { rooms } from "../data/rooms";
 import "../styles/landing.css";
-import { rooms } from "../data/rooms.js";
 
 function Landing() {
+  // Navigation
   const navigate = useNavigate();
 
-  const handleSelect = (room) => {
+  // Handlers
+  const handleSelectRoom = ({
+    id,
+    title,
+    maxUsers,
+    icon,
+  }) => {
     navigate("/home", {
       state: {
-        roomType: room.id,
-        roomTitle: room.title,
-        maxUsers: room.maxUsers,
-        roomIcon: room.icon,
+        roomType: id,
+        roomTitle: title,
+        maxUsers,
+        roomIcon: icon,
       },
     });
   };
 
   return (
-    <div className="landing-container">
-      <h1>🌎 Long Distance Connect</h1>
+    <main className="landing">
+      <section className="landing__hero">
+        <h1 className="landing__title">
+          🌎 Long Distance Connect
+        </h1>
 
-      <p>Choose your experience</p>
+        <p className="landing__subtitle">
+          Choose your experience
+        </p>
+      </section>
 
-      <div className="card-grid">
+      <section className="landing__grid">
         {rooms.map((room) => (
-          <div key={room.id} className="option-card" onClick={() => handleSelect(room)}>
-            <img src={room.image} alt={room.title} />
-            
-            <h2>{room.title} {room.icon}</h2>
-            <p>
+          <article
+            key={room.id}
+            className={`landing__card landing__card--${room.id}`}
+            onClick={() => handleSelectRoom(room)}
+          >
+            <img
+              className="landing__image"
+              src={room.image}
+              alt={room.title}
+            />
+
+            <h2 className="landing__card-title">
+              {room.icon} {room.title}
+            </h2>
+
+            <p className="landing__description">
               {room.description}
-            </p><br />
-            <p>{room.maxUsers} Members</p>
-          </div>
+            </p>
+
+            <p className="landing__members">
+              {room.maxUsers} Members
+            </p>
+          </article>
         ))}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
 
