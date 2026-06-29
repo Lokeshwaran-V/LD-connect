@@ -29,35 +29,7 @@
   }
 }
 /* HEADER */
-.header {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-.content {
-  width: 80%;
-  max-width: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 15px;
-  border-radius: 20px;
-  backdrop-filter: blur(20px);
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-}
-.header .content h1{
-  font-size: 50px;
-}
-.room-info {
-  display: flex;
-  justify-content: space-between;
-  width: 90%;
-  max-width: 90%;
-  align-items: center;
-  margin: 10px 0px;
-}
+
 @media (max-width: 760px) {
   .header .content {
     width: 100%;
@@ -77,16 +49,6 @@
   .room-info p:first-of-type{
     display: none;
   }
-}
-
-/* SONG SECTION */
-.song-list {
-  margin-bottom: 20px;
-  padding: 20px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px);
-  overflow-x: auto;
 }
 
 /* MAIN */

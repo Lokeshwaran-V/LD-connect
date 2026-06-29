@@ -24,7 +24,7 @@
   width: 80%;
 
   /* Spacing */
-  padding: 12px 20px;
+  padding: 10px 15px;
 
   /* Appearance */
   background: rgba(255, 255, 255, 0.08);
@@ -38,7 +38,7 @@
 
 .room-header__title {
   /* Typography */
-  font-size: 3rem;
+  font-size: 3.25rem;
 }
 
 /* Info */
@@ -52,7 +52,7 @@
   width: 90%;
 
   /* Spacing */
-  margin-top: 12px;
+  margin-top: 10px 0;
 }
 
 /* Info Items */
