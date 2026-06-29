@@ -152,7 +152,7 @@ function VideoPlayer({ videoId, roomId }) {
             <div className="overlay-content">
               <h2>🎬</h2>
               <h3>Ready to Watch</h3>
-              <p>Start Together</p>
+              {/* <p>Start Together</p> */}
             </div>
           </div>
         )}

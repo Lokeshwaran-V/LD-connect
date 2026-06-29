@@ -1,4 +1,4 @@
-import RoomHeader from "../RoomHeader";
+import RoomHeader from "../RoomInformation";
 import UserPanel from "../UserPanel";
 import YouTubeSection from "../YouTubeSection";
 import VideoPlayer from "../VideoPlayer";

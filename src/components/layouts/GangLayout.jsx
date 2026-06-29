@@ -1,4 +1,4 @@
-import RoomHeader from "../RoomHeader";
+import RoomHeader from "../RoomInformation";
 import YouTubeSection from "../YouTubeSection";
 import UserPanel from "../UserPanel";
 import VideoPlayer from "../VideoPlayer";
@@ -25,12 +25,10 @@ function GangLayout({
       <div className="gang-main">
         <UserPanel users={users} title="😎 Gang" />
 
-        <RoomControl  videoId={videoId} roomId={roomId} />
+        <RoomControl videoId={videoId} roomId={roomId} />
       </div>
 
-      <div className="controller">
-        
-      </div>
+      <div className="controller"></div>
 
       <YouTubeSection onSelectVideo={setVideoId} roomId={roomId} />
 

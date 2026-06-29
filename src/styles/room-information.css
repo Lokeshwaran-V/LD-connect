@@ -1,0 +1,65 @@
+/* ==========================================================================
+   Room Header
+   ========================================================================== */
+
+/* Block */
+
+.room-header {
+  /* Layout */
+  display: flex;
+  justify-content: center;
+
+  /* Spacing */
+  margin-bottom: 20px;
+}
+
+/* Container */
+
+.room-header__container {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 80%;
+
+  /* Spacing */
+  padding: 12px 20px;
+
+  /* Appearance */
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(20px);
+}
+
+/* Title */
+
+.room-header__title {
+  /* Typography */
+  font-size: 3rem;
+}
+
+/* Info */
+
+.room-header__info {
+  /* Layout */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 90%;
+
+  /* Spacing */
+  margin-top: 12px;
+}
+
+/* Info Items */
+
+.room-header__room-id,
+.room-header__max-users,
+.room-header__users {
+  /* Spacing */
+  margin: 0;
+}

@@ -5,12 +5,11 @@ import ChatBox from "../components/ChatBox";
 import VideoPlayer from "../components/VideoPlayer";
 import YouTubeSection from "../components/YouTubeSection";
 import "../styles/room.css";
-import RoomHeader from "../components/RoomHeader";
+import RoomHeader from "../components/RoomInformation";
 import UserPanel from "../components/UserPanel";
 import RoomControl from "../components/RoomControl";
 import CoupleLayout from "../components/layouts/CoupleLayout";
 import GangLayout from "../components/layouts/GangLayout";
-// import { rooms } from "../data/rooms";
 
 function Room() {
   const { id } = useParams();
@@ -118,16 +117,6 @@ function Room() {
         setVideoId={setVideoId}
         roomIcon={roomIcon}
       />
-
-      {/* <GangLayout
-        roomId={id}
-        roomTitle={roomTitle}
-        maxUsers={maxUsers}
-        users={users}
-        name={name}
-        videoId={videoId}
-        setVideoId={setVideoId}
-      /> */}
     </div>
   );
 }

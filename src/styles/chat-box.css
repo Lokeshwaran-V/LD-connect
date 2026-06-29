@@ -8,6 +8,7 @@
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   min-height: 50vh;
+  margin: 10px 0;
 }
 
 .chat-list {
@@ -43,12 +44,23 @@
 
 .message-section {
     display: flex;
-    gap: 10px;
 }
 
 .message-section p {
     font-size: large;
-    text-transform: capitalize;
+    text-transform: lowercase;
+    
     letter-spacing: 1px;
     margin-bottom: 5px;
+}
+
+.message-section p::first-letter {
+    text-transform: uppercase ;
+}
+
+.message-section p:first-child {
+    min-width: 10%;
+}
+.message-section p:nth-child(2) {
+    max-width: 85%;
 }
